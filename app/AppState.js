@@ -21,6 +21,9 @@ class AppState extends EventEmitter {
 
   /** @type {import('./Models/Todo').Todo[]} */
   todos = []
+
+  
+  theme = 'light'
 }
 
 export const appState = new Proxy(new AppState(), {

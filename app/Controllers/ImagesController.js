@@ -1,16 +1,22 @@
 import { appState } from "../AppState.js"
+import { Image } from "../Models/Image.js"
 import { imagesService } from "../Services/ImagesService.js"
 import { Pop } from "../Utils/Pop.js"
+import { setHTML, setText } from "../Utils/Writer.js"
 
 function _drawBackgroundImage() {
-    console.log('draw background image')
     document.body.style.backgroundImage = `url(${appState.image.img})`
+}
+
+function _drawImageAuthor() {
+    setText('image-author', `Photo by ${appState.image.author}`)
 }
 
 export class ImagesController {
     constructor() {
         this.getImages()
         appState.on('image', _drawBackgroundImage)
+        appState.on('image', _drawImageAuthor)
     }
 
     async getImages() {
