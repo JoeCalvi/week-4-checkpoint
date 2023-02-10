@@ -1,3 +1,4 @@
+import { appState } from "../AppState.js"
 import { weatherService } from "../Services/WeatherService.js"
 import { Pop } from "../Utils/Pop.js"
 
@@ -13,5 +14,9 @@ export class WeatherController {
             console.error('[getWeather error]')
             Pop.error(error)
         }
+    }
+
+    calculateTemperature() {
+        weatherService.calculateTemperature()
     }
 }
