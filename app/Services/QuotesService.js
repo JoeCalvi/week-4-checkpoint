@@ -1,9 +1,12 @@
+import { appState } from "../AppState.js"
 import { sandbox_api } from "./AxiosService.js"
+import { Quote } from "../Models/Quote.js"
 
 class QuotesService {
     async getQuotes() {
         const res = await sandbox_api.get('/quotes')
-        console.log('[quotes res.data]', res.data)
+        appState.quote = new Quote(res.data)
+        console.log('[appState.quotes]', appState.quote)
     }
 }
 
