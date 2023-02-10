@@ -6,6 +6,8 @@ import { setHTML, setText } from "../Utils/Writer.js"
 
 function _drawBackgroundImage() {
     document.body.style.backgroundImage = `url(${appState.image.img})`
+    document.body.style.backgroundRepeat = 'no-repeat'
+    document.body.style.backgroundSize = 'cover'
 }
 
 function _drawImageAuthor() {
