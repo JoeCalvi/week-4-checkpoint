@@ -6,7 +6,7 @@ import { setText } from "../Utils/Writer.js"
 
 function _drawWeather() {
     let weather = appState.weather
-    setText('current-temp', `${weather.temp}°F`)
+    setText('current-temp', `${weather.feels_like}°F`)
     setText('high-low', `H: ${weather.temp_max}° L: ${weather.temp_min}°`)
 }
 

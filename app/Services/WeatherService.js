@@ -12,14 +12,17 @@ class WeatherService {
     calculateTemperature() {
         let tempInKelvin = appState.weather.temp
         let tempInFahrenheit = Math.floor(((tempInKelvin - 273.15) * (9 / 5)) + 32)
+        let feelsLikeInKelvin = appState.weather.feels_like
+        let feelsLikeInFahrenheit = Math.floor(((feelsLikeInKelvin - 273.15) * (9 / 5)) + 32)
         let maxTempInKelvin = appState.weather.temp_max
         let maxTempInFahrenheit = Math.floor(((maxTempInKelvin - 273.15) * (9 / 5)) + 32)
         let minTempInKelvin = appState.weather.temp_min
         let minTempInFahrenheit = Math.floor(((minTempInKelvin - 273.15) * (9 / 5)) + 32)
         appState.weather.temp = tempInFahrenheit
+        appState.weather.feels_like = feelsLikeInFahrenheit
         appState.weather.temp_max = maxTempInFahrenheit
         appState.weather.temp_min = minTempInFahrenheit
-        console.log('[Temp F]', appState.weather.temp, '[Max Temp F]', appState.weather.temp_max, '[Min Temp F]', appState.weather.temp_min)
+        console.log('[Temp F]', appState.weather.temp, '[Feels Like F]', appState.weather.feels_like, '[Max Temp F]', appState.weather.temp_max, '[Min Temp F]', appState.weather.temp_min)
     }
 }
 
