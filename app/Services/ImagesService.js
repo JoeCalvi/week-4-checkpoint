@@ -6,7 +6,6 @@ class ImagesService {
     async getImages() {
         const res = await sandbox_api.get('/images')
         appState.image = new Image(res.data)
-        console.log('[appState.image]', appState.image)
     }
 }
 

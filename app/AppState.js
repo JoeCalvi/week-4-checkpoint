@@ -22,7 +22,6 @@ class AppState extends EventEmitter {
   /** @type {import('./Models/Todo').Todo[]} */
   todos = []
 
-  
   theme = 'light'
 }
 
