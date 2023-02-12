@@ -6,7 +6,6 @@ class QuotesService {
     async getQuotes() {
         const res = await sandbox_api.get('/quotes')
         appState.quote = new Quote(res.data)
-        console.log('[appState.quotes]', appState.quote)
     }
 }
 

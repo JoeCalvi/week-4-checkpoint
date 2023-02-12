@@ -21,7 +21,7 @@
     <div class="row m-0">
       <div class="col-6 d-flex align-items-center">
         <div class="ms-2 mt-2">
-          <button class="btn btn-outline" id="theme-button" onclick="app.themeController.toggleTheme()">
+          <button class="btn" id="theme-button" onclick="app.themeController.toggleTheme()">
             <!-- <span class="mdi mdi-weather-sunny"></span> -->
           </button>
         </div>
@@ -39,8 +39,10 @@
     </div>
   </header>
 
-  <main>
-
+  <main class="d-flex align-items-center justify-content-center">
+    <div class="row">
+      <h3 id="timeclock"></h3>
+    </div>
   </main>
 
   <footer class="text-center">

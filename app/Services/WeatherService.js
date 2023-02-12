@@ -6,7 +6,6 @@ class WeatherService {
     async getWeather() {
         const res = await sandbox_api.get('/weather')
         appState.weather = new Weather(res.data.main)
-        console.log('[appState.weather]', appState.weather)
     }
 
     calculateTemperature() {
@@ -39,9 +38,6 @@ class WeatherService {
         appState.weather.feels_like = tempInFahrenheit
         appState.weather.temp_max = tempInFahrenheit
         appState.weather.temp_min = tempInFahrenheit
-
-        console.log('[Temp F]', appState.weatherInFahrenheit)
-        console.log('[Temp C]', appState.weatherInCelsius)
     }
 
     toggleTempUnit() {
@@ -56,7 +52,6 @@ class WeatherService {
             appState.weather.temp_max = appState.weatherInFahrenheit.temp_max
             appState.weather.temp_min = appState.weatherInFahrenheit.temp_min
         }
-        console.log('[Temp]', appState.weather.temp, '[Feels Like]', appState.weather.feels_like, '[Max]', appState.weather.temp_max, '[Min]', appState.weather.temp_min)
     }
 }
 
