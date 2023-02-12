@@ -2,12 +2,16 @@ import { appState } from "../AppState.js"
 import { todosService } from "../Services/TodosService.js"
 import { getFormData } from "../Utils/FormHandler.js"
 import { Pop } from "../Utils/Pop.js"
-import { setHTML } from "../Utils/Writer.js"
+import { setHTML, setText } from "../Utils/Writer.js"
 
 function _drawTodos() {
     let template = ''
-    appState.todos.forEach(todo => template += todo.TodoListTemplate)
+    let todos = appState.todos
+    todos.forEach(todo => template += todo.TodoListTemplate)
     setHTML('todo-list', template)
+    let incompleteTasks = todos.filter(todo => todo.completed == false)
+    console.log('[incomplete]', incompleteTasks)
+    setText('todo-count', `Left to Do: ${incompleteTasks.length}`)
 }
 
 export class TodosController {
@@ -15,6 +19,7 @@ export class TodosController {
         this.getTodos()
         _drawTodos()
         appState.on('todos', _drawTodos)
+        appState.on('todos', console.log(appState.todos))
     }
 
     async getTodos() {
@@ -46,6 +51,15 @@ export class TodosController {
             }
         } catch (error) {
             console.error('[removeTodo error]')
+            Pop.error(error)
+        }
+    }
+
+    async completeTodo(id) {
+        try {
+            await todosService.completeTodo(id)
+        } catch (error) {
+            console.error('[completeTodo error]')
             Pop.error(error)
         }
     }

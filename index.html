@@ -60,16 +60,15 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">To-Do List</h5>
+          <h5 class="modal-title" id="todo-count">To-Dos: 2</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
           <div class="row" id="todo-list">
             <!-- STUB todo template -->
-            
-            <input type="checkbox" class="me-2">
+            <!-- <input type="checkbox" class="me-2">
             <label for="todo">go to gym</label>
-            <button class="btn btn-outline-danger ms-2"><span class="mdi mdi-delete-circle"></span></button>
+            <button class="btn btn-outline-danger ms-2"><span class="mdi mdi-delete-circle"></span></button> -->
           </div>
           <form onsubmit="app.todosController.addTodo()">
             <label for="new-todo">New Todo</label>
@@ -81,7 +80,6 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          <button type="button" class="btn btn-primary">Save changes</button>
         </div>
       </div>
     </div>

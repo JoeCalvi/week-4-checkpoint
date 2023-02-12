@@ -24,6 +24,15 @@ class TodosService {
         console.log('[appState.todos]', appState.todos)
     }
 
+    async completeTodo(id) {
+        const todoIndex = appState.todos.findIndex(t => t.id == id)
+        const todo = appState.todos[todoIndex]
+        const res = await sandbox_api.put(`/joe/todos/${id}`, { completed: !todo.completed })
+        appState.todos.splice(todoIndex, 1, new Todo(res.data))
+        appState.emit('todos')
+        console.log('[complete todo]', todo)
+    }
+
 }
 
 export const todosService = new TodosService()
