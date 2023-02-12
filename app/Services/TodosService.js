@@ -16,6 +16,14 @@ class TodosService {
         appState.emit('todos')
     }
 
+    async removeTodo(id) {
+        const res = await sandbox_api.delete('/joe/todos/' + id)
+        let oldTodoIndex = appState.todos.findIndex(t => t.id == id)
+        appState.todos.splice(oldTodoIndex, 1)
+        appState.emit('todos')
+        console.log('[appState.todos]', appState.todos)
+    }
+
 }
 
 export const todosService = new TodosService()

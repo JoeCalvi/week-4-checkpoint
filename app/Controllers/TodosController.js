@@ -38,4 +38,15 @@ export class TodosController {
             Pop.error(error)
         }
     }
+
+    async removeTodo(id) {
+        try {
+            if (await Pop.confirm('Are you sure you want to delete this To-do?')) {
+                await todosService.removeTodo(id)
+            }
+        } catch (error) {
+            console.error('[removeTodo error]')
+            Pop.error(error)
+        }
+    }
 }
