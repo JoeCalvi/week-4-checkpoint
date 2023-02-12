@@ -9,6 +9,13 @@ class TodosService {
         console.log('[appState.todos]', appState.todos)
     }
 
+    async addTodo(formData) {
+        const res = await sandbox_api.post('/joe/todos', formData)
+        let todo = new Todo(res.data)
+        appState.todos.push(todo)
+        appState.emit('todos')
+    }
+
 }
 
 export const todosService = new TodosService()

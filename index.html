@@ -64,19 +64,18 @@
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <form type="submit" class="mb-2">
-            <div class="d-flex align-items-center justify-content-between" id="todo-list">
-              <!-- STUB todo template -->
-              <input type="checkbox" class="me-2">
-              <label for="todo">go to gym</label>
-              <button class="btn btn-outline-danger ms-2"><span class="mdi mdi-delete-circle"></span></button>
-            </div>
-          </form>
-          <form type="submit">
+          <div class="row" id="todo-list">
+            <!-- STUB todo template -->
+            
+            <input type="checkbox" class="me-2">
+            <label for="todo">go to gym</label>
+            <button class="btn btn-outline-danger ms-2"><span class="mdi mdi-delete-circle"></span></button>
+          </div>
+          <form onsubmit="app.todosController.addTodo()">
             <label for="new-todo">New Todo</label>
-            <input type="text" class="form-control mt-2 mb-2" required>
+            <input type="text" class="form-control mt-2 mb-2" required id="description" name="description">
             <div class="text-end">
-              <button class="btn btn-primary" onsubmit="app.todosController.addTodo()">Add Todo</button>
+              <button class="btn btn-primary" type="submit">Add Todo</button>
             </div>
           </form>
         </div>
