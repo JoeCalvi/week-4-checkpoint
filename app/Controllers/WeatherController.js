@@ -5,9 +5,13 @@ import { setText } from "../Utils/Writer.js"
 
 
 function _drawWeather() {
-    let weather = appState.weather
-    setText('current-temp', `${weather.feels_like}°F`)
-    setText('high-low', `H: ${weather.temp_max}° L: ${weather.temp_min}°`)
+    if (appState.weather.temp == appState.weatherInFahrenheit.temp) {
+        setText('current-temp', `${appState.weatherInFahrenheit.feels_like}°F`)
+        setText('high-low', `H: ${appState.weatherInFahrenheit.temp_max}° L: ${appState.weatherInFahrenheit.temp_min}°`)
+    } else if (appState.weather.temp == appState.weatherInCelsius.temp) {
+        setText('current-temp', `${appState.weatherInCelsius.feels_like}°C`)
+        setText('high-low', `H: ${appState.weatherInCelsius.temp_max}° L: ${appState.weatherInCelsius.temp_min}°`)
+    }
 }
 
 
@@ -29,5 +33,10 @@ export class WeatherController {
 
     calculateTemperature() {
         weatherService.calculateTemperature()
+    }
+
+    toggleTempUnit() {
+        weatherService.toggleTempUnit()
+        _drawWeather()
     }
 }

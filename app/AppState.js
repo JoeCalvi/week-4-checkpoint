@@ -18,6 +18,18 @@ class AppState extends EventEmitter {
 
   /** @type {import('./Models/Weather').Weather} */
   weather = null
+  weatherInFahrenheit = {
+    temp: null,
+    feels_like: null,
+    temp_max: null,
+    temp_min: null
+  }
+  weatherInCelsius = {
+    temp: null,
+    feels_like: null,
+    temp_max: null,
+    temp_min: null
+  }
 
   /** @type {import('./Models/Todo').Todo[]} */
   todos = []

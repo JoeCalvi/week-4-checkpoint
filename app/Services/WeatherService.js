@@ -11,18 +11,52 @@ class WeatherService {
 
     calculateTemperature() {
         let tempInKelvin = appState.weather.temp
-        let tempInFahrenheit = Math.floor(((tempInKelvin - 273.15) * (9 / 5)) + 32)
         let feelsLikeInKelvin = appState.weather.feels_like
-        let feelsLikeInFahrenheit = Math.floor(((feelsLikeInKelvin - 273.15) * (9 / 5)) + 32)
         let maxTempInKelvin = appState.weather.temp_max
-        let maxTempInFahrenheit = Math.floor(((maxTempInKelvin - 273.15) * (9 / 5)) + 32)
         let minTempInKelvin = appState.weather.temp_min
+
+        let tempInFahrenheit = Math.floor(((tempInKelvin - 273.15) * (9 / 5)) + 32)
+        let feelsLikeInFahrenheit = Math.floor(((feelsLikeInKelvin - 273.15) * (9 / 5)) + 32)
+        let maxTempInFahrenheit = Math.floor(((maxTempInKelvin - 273.15) * (9 / 5)) + 32)
         let minTempInFahrenheit = Math.floor(((minTempInKelvin - 273.15) * (9 / 5)) + 32)
+
+        appState.weatherInFahrenheit.temp = tempInFahrenheit
+        appState.weatherInFahrenheit.feels_like = feelsLikeInFahrenheit
+        appState.weatherInFahrenheit.temp_max = maxTempInFahrenheit
+        appState.weatherInFahrenheit.temp_min = minTempInFahrenheit
+
+        let tempInCelsius = Math.floor(tempInKelvin - 273.15)
+        let feelsLikeInCelsius = Math.floor(feelsLikeInKelvin - 273.15)
+        let maxTempInCelsius = Math.floor(maxTempInKelvin - 273.15)
+        let minTempInCelsius = Math.floor(minTempInKelvin - 273.15)
+
+        appState.weatherInCelsius.temp = tempInCelsius
+        appState.weatherInCelsius.feels_like = feelsLikeInCelsius
+        appState.weatherInCelsius.temp_max = maxTempInCelsius
+        appState.weatherInCelsius.temp_min = minTempInCelsius
+
         appState.weather.temp = tempInFahrenheit
-        appState.weather.feels_like = feelsLikeInFahrenheit
-        appState.weather.temp_max = maxTempInFahrenheit
-        appState.weather.temp_min = minTempInFahrenheit
-        console.log('[Temp F]', appState.weather.temp, '[Feels Like F]', appState.weather.feels_like, '[Max Temp F]', appState.weather.temp_max, '[Min Temp F]', appState.weather.temp_min)
+        appState.weather.feels_like = tempInFahrenheit
+        appState.weather.temp_max = tempInFahrenheit
+        appState.weather.temp_min = tempInFahrenheit
+
+        console.log('[Temp F]', appState.weatherInFahrenheit)
+        console.log('[Temp C]', appState.weatherInCelsius)
+    }
+
+    toggleTempUnit() {
+        if (appState.weather.temp == appState.weatherInFahrenheit.temp) {
+            appState.weather.temp = appState.weatherInCelsius.temp
+            appState.weather.feels_like = appState.weatherInCelsius.feels_like
+            appState.weather.temp_max = appState.weatherInCelsius.temp_max
+            appState.weather.temp_min = appState.weatherInCelsius.temp_min
+        } else if (appState.weather.temp == appState.weatherInCelsius.temp) {
+            appState.weather.temp = appState.weatherInFahrenheit.temp
+            appState.weather.feels_like = appState.weatherInFahrenheit.feels_like
+            appState.weather.temp_max = appState.weatherInFahrenheit.temp_max
+            appState.weather.temp_min = appState.weatherInFahrenheit.temp_min
+        }
+        console.log('[Temp]', appState.weather.temp, '[Feels Like]', appState.weather.feels_like, '[Max]', appState.weather.temp_max, '[Min]', appState.weather.temp_min)
     }
 }
 
