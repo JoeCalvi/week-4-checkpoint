@@ -43,12 +43,50 @@
     <div class="row">
       <h3 id="timeclock"></h3>
     </div>
+    <div class="ms-2">
+      <button class="btn" data-bs-toggle="modal" data-bs-target="#todo-modal"><span
+          class="mdi mdi-notebook-plus-outline"></span></button>
+    </div>
   </main>
 
   <footer class="text-center">
     <p class="fs-5 mb-0" id="quote"></p>
     <p class="on-hover" id="quote-author"></p>
   </footer>
+
+
+  <!-- SECTION modal -->
+  <div class="modal" tabindex="-1" id="todo-modal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">To-Do List</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form type="submit" class="mb-2">
+            <div class="d-flex align-items-center justify-content-between" id="todo-list">
+              <!-- STUB todo template -->
+              <input type="checkbox" class="me-2">
+              <label for="todo">go to gym</label>
+              <button class="btn btn-outline-danger ms-2"><span class="mdi mdi-delete-circle"></span></button>
+            </div>
+          </form>
+          <form type="submit">
+            <label for="new-todo">New Todo</label>
+            <input type="text" class="form-control mt-2 mb-2" required>
+            <div class="text-end">
+              <button class="btn btn-primary" onsubmit="app.todosController.addTodo()">Add Todo</button>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.27.2/axios.min.js"
     integrity="sha512-odNmoc1XJy5x1TMVMdC7EMs3IVdItLPlCeL5vSUPN2llYKMJ2eByTTAIiiuqLg+GdNr9hF6z81p27DArRFKT7A=="

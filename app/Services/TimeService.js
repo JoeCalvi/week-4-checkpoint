@@ -5,7 +5,6 @@ class TimeService {
 
     setTime() {
         appState.time = new Date().toLocaleTimeString()
-        console.log(appState.time)
     }
 
 }
